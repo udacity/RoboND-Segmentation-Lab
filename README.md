@@ -13,7 +13,7 @@ git clone https://github.com/udacity/RoboND-Segmentation-Lab.git
 # Make sure the environment is activated!
 jupyter notebook
 ```
-The Jupyter interface will open in your browser. You can then access the cloned repo and the Jupyter Notebook from there. We are specifically working with the `student_notebook.ipynb` which can be found in following path `code/segmentation_lab.ipynb`.
+The Jupyter interface will open in your browser. You can then access the cloned repo and the Jupyter Notebook from there. We are specifically working with the `segmentation_lab.ipynb` which can be found in following path `code/segmentation_lab.ipynb`.
 
 #### Download the Data
 
