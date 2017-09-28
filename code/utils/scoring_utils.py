@@ -84,12 +84,13 @@ def score_run(gt_dir, pred_dir):
             ious[i] += intersection_over_union(pred_mask[:,:,i], gt_mask[:,:,i])
 
     background = ious[0] / n_preds
-    hero = ious[1] / n_preds
-    people = ious[2] / n_preds
+    people = ious[1] / n_preds
+    hero = ious[2] / n_preds
 
     average = (background + hero + people)/3
     print('number of validation samples intersection over the union evaulated on {}'.format(n_preds))
     print('average intersection over union for background is {}'.format(background))
-    print('average intersection over union for hero is {}'.format(hero))
     print('average intersection over union for other people is {}'.format(people))
+    print('average intersection over union for hero is {}'.format(hero))
+
     print('global average intersection over union is {}'.format(average))
