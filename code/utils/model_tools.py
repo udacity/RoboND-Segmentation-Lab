@@ -73,15 +73,12 @@ def load_network(your_weight_filename):
         raise ValueError('No weight file found at {}'.format(weight_path))
 
 
-def write_predictions_grade_set(model, out_folder_suffix,subset_name, grading_dir_name=None):
-    if grading_dir_name:
-        validation_path = os.path.join('..', 'data', grading_dir_name, subset_name)
-    else:
-        validation_path = os.path.join('..', 'data', subset_name)
-
+def write_predictions_grade_set(model, run_number, validation_folder):
+    
+    validation_path = os.path.join('..', 'data', validation_folder)
     file_names = sorted(glob.glob(os.path.join(validation_path, 'images', '*.jpeg')))
 
-    output_path = os.path.join('..', 'data', 'runs', subset_name + '_' + out_folder_suffix)
+    output_path = os.path.join('..', 'data', 'runs', run_number)
     make_dir_if_not_exist(output_path)
     image_shape = model.layers[0].output_shape[1]
 
@@ -94,4 +91,5 @@ def write_predictions_grade_set(model, out_folder_suffix,subset_name, grading_di
         base_name = os.path.basename(name).split('.')[0]
         base_name = base_name + '_prediction.png'
         misc.imsave(os.path.join(output_path, base_name), np.squeeze((pred * 255).astype(np.uint8)))
+
     return validation_path, output_path
