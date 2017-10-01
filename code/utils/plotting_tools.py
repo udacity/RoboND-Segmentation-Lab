@@ -70,19 +70,15 @@ def get_im_file_sample(pred_run_name, subset_name, grading_data_dir_name=None,  
         path = os.path.join('..', 'data', grading_data_dir_name)
     else:
         path = os.path.join('..', 'data')
-
+    
     ims = np.array(get_im_files(path, subset_name)) 
     masks = np.array(get_mask_files(path, subset_name))  
     
     shuffed_inds = np.random.permutation(np.arange(masks.shape[0]))
+
     ims_subset = ims[shuffed_inds[:n_file_names]]
     masks_subset = masks[shuffed_inds[:n_file_names]]
-    if not pred_run_name:
-        return list(zip(ims_subset, masks_subset))
-    else:
-        preds = np.array(get_pred_files(subset_name+'_'+pred_run_name))
-        preds_subset = preds[shuffed_inds[:n_file_names]]
-        return list(zip(ims_subset, masks_subset, preds_subset))
+    return list(zip(ims_subset, masks_subset))
     
 def load_images(file_tuple):
     im = misc.imread(file_tuple[0])
