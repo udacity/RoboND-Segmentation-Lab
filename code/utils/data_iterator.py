@@ -98,7 +98,7 @@ class BatchIteratorSimple(Iterator):
         mask_files = sorted(glob(os.path.join(data_folder, 'masks', '*.png')))
 
         if len(im_files) == 0:
-            raise ValueError('No image files found, check your train image diractory')
+            raise ValueError('No image files found, check your train image directory')
 
         if len(mask_files) == 0:
             raise ValueError('No mask files found, check your train mask directory')
